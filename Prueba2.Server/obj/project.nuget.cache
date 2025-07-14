@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Lk1bHTBAcaU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\desapp\\source\\repos\\Prueba2\\Prueba2.Server\\Prueba2.Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\desapp\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
+    "C:\\Users\\desapp\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\9.0.7\\microsoft.aspnetcore.spaproxy.9.0.7.nupkg.sha512",
+    "C:\\Users\\desapp\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

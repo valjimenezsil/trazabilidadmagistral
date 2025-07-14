@@ -1,0 +1,14 @@
+:root {
+    /*Verde aqua*/
+    --primary: #00B094;
+    --primary-1: #00846f;
+    --primary-2: #00584a;
+    --primary-3: #004238;
+    --primary-4: #001612;
+
+    /*Gris*/
+    --gray: #f9fafb;
+    --gray-1: #dadbdc;
+    --gray-2: #bbbbbc;
+    --gray-3: #9c9c9d;
+}

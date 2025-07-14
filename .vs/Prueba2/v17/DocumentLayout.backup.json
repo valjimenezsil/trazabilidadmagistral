@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\desapp\\source\\repos\\Prueba2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|c:\\users\\desapp\\source\\repos\\prueba2\\prueba2.client\\src\\styles\\colors.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|solutionrelative:prueba2.client\\src\\styles\\colors.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|c:\\users\\desapp\\source\\repos\\prueba2\\prueba2.client\\src\\modules\\entrada.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|solutionrelative:prueba2.client\\src\\modules\\entrada.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|c:\\users\\desapp\\source\\repos\\prueba2\\prueba2.client\\src\\styles\\entrada.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|solutionrelative:prueba2.client\\src\\styles\\entrada.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|c:\\users\\desapp\\source\\repos\\prueba2\\prueba2.client\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|solutionrelative:prueba2.client\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|c:\\users\\desapp\\source\\repos\\prueba2\\prueba2.client\\src\\main.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|solutionrelative:prueba2.client\\src\\main.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|c:\\users\\desapp\\source\\repos\\prueba2\\prueba2.client\\src\\components\\layout.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A8E3A578-3D54-B351-2B2B-E78300D5740C}|prueba2.client\\prueba2.client.esproj|solutionrelative:prueba2.client\\src\\components\\layout.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.css",
+              "DocumentMoniker": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\App.css",
+              "RelativeDocumentMoniker": "prueba2.client\\src\\App.css",
+              "ToolTip": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\App.css",
+              "RelativeToolTip": "prueba2.client\\src\\App.css",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAswHsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-02T16:06:03.548Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Entrada.css",
+              "DocumentMoniker": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\styles\\Entrada.css",
+              "RelativeDocumentMoniker": "prueba2.client\\src\\styles\\Entrada.css",
+              "ToolTip": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\styles\\Entrada.css",
+              "RelativeToolTip": "prueba2.client\\src\\styles\\Entrada.css",
+              "ViewState": "AgIAACMAAAAAAAAAAAAswCkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-03T17:13:31.691Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Entrada.jsx",
+              "DocumentMoniker": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\modules\\Entrada.jsx",
+              "RelativeDocumentMoniker": "prueba2.client\\src\\modules\\Entrada.jsx",
+              "ToolTip": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\modules\\Entrada.jsx",
+              "RelativeToolTip": "prueba2.client\\src\\modules\\Entrada.jsx",
+              "ViewState": "AgIAANIAAAAAAAAAAAAcwNwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-07-02T16:08:55.277Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "colors.css",
+              "DocumentMoniker": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\styles\\colors.css",
+              "RelativeDocumentMoniker": "prueba2.client\\src\\styles\\colors.css",
+              "ToolTip": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\styles\\colors.css",
+              "RelativeToolTip": "prueba2.client\\src\\styles\\colors.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-14T22:09:03.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.jsx",
+              "DocumentMoniker": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\main.jsx",
+              "RelativeDocumentMoniker": "prueba2.client\\src\\main.jsx",
+              "ToolTip": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\main.jsx",
+              "RelativeToolTip": "prueba2.client\\src\\main.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-07-14T21:55:00.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Layout.jsx",
+              "DocumentMoniker": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\components\\Layout.jsx",
+              "RelativeDocumentMoniker": "prueba2.client\\src\\components\\Layout.jsx",
+              "ToolTip": "C:\\Users\\desapp\\source\\repos\\Prueba2\\prueba2.client\\src\\components\\Layout.jsx",
+              "RelativeToolTip": "prueba2.client\\src\\components\\Layout.jsx",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAkwGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-07-14T21:12:45.297Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

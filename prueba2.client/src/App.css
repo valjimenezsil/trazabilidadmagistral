@@ -1,0 +1,130 @@
+﻿#root {
+    margin: 0;
+    padding: 0 !important;
+    font-size: 0.9rem;
+    width: 100%;
+    height: 100%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+}
+
+/*Dropdowns*/
+.p-dropdown-items .p-dropdown-item {
+    font-size: 0.9rem;
+}
+.p-dropdown-items .p-dropdown-item.p-highlight {
+    background-color: var(--primary);
+    color: white;
+}
+
+/*Label*/
+label {
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+/*Input*/
+.p-inputtext {
+    font-size: 0.9rem;
+}
+
+.p-datepicker-trigger {
+    background-color: var(--primary);
+    border: var(--primary);
+}
+.p-datepicker-trigger:hover {
+    background-color: var(--primary-1);
+    border: var(--primary-1);
+}
+
+.p-inputnumber-input {
+    width: 100px;
+}
+
+/*Botones*/
+.p-inputnumber-button {
+    background-color: var(--primary);
+    border: var(--primary);
+}
+
+    .p-inputnumber-button:hover {
+        background-color: var(--primary-1);
+    }
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-success {
+    background: var(--primary);
+    color: white;
+    border: var(--primary);
+}
+
+.btn-succes-letter {
+    color: var(--primary);
+}
+.btn-success:hover {
+    background: var(--primary-1);
+    color: white;
+    border: var(--primary-1);
+}
+/* Filtros*/
+.filter-container {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.p-field {
+    align-items: center;
+}
+
+    .p-field .p-inputtext,
+    .p-field .p-inputnumber,
+    .p-field .p-calendar,
+    .p-field .p-dropdown {
+        flex: 1;
+        min-width: 0;
+    }
+
+/*Tabla*/
+.p-datatable .p-datatable-tbody > tr > td {
+    font-size: 0.8rem !important;
+    color: #333;
+}
+
+.tabla-container {
+    --datatable-border: #ddd !important;
+    overflow-x: auto;
+}
+
+    .tabla-container .p-datatable {
+        border: 1px solid #ddd !important;
+        border-radius: 6px !important;
+        overflow: hidden;
+        min-width: 800px;
+        table-layout: fixed !important;
+    }
+
+.p-datatable-table td.btn-col .p-button,
+.p-datatable-table th.btn-col .p-button {
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+    line-height: 1.5rem !important;
+}
+.p-datatable .p-datatable-thead > tr > th.p-sortable-column.p-sortable-column-active {
+    background-color: var(--primary) !important;
+    color: white !important;
+}
+.p-datatable .p-datatable-thead > tr > th.p-highlight {
+        background-color: var(--gray-1) !important;
+
+}

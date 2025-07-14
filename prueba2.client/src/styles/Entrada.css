@@ -1,0 +1,50 @@
+/*Entrada*/
+.entrada-page {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 8rem;
+}
+.entrada-content {
+    flex: 1;
+    overflow: auto;
+    padding: 1.5rem 0em;
+    gap: 1rem;
+}
+
+/*Formulario de entrada grid*/
+.form-grid-entrada {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+}
+.div2 {
+    grid-column: span 3 / span 3;
+}
+
+.div3 {
+    grid-row-start: 2;
+}
+
+.div4 {
+    grid-row-start: 2;
+}
+
+.div5 {
+    grid-row-start: 2;
+}
+
+.div6 {
+    grid-row-start: 2;
+}
+
+/*Tabla*/
+.p-datatable-gridlines .p-datatable-table th.no-border-right,
+.p-datatable-gridlines .p-datatable-table td.no-border-right {
+    border-right: none !important;
+}
+
+.p-datatable-gridlines .p-datatable-table th.no-border-left,
+.p-datatable-gridlines .p-datatable-table td.no-border-left {
+    border-left: none !important;
+}
