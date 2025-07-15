@@ -47,7 +47,13 @@ const Layout = ({ children }) => {
             }
             ]
         },
-        { label: 'Alistamiento', icon: <Inventory2OutlinedIcon fontSize='small' />, command: () => window.location.href = '/entrada' },
+        {
+            label: 'Alistamiento', icon: <Inventory2OutlinedIcon fontSize='small' />,
+            command: () => window.location.href = '/entrada',
+            className: location.pathname === '/entrada'
+                ? 'p-menuitem-active'
+                : ''
+        },
         { label: 'Solicitudes', icon: <InboxOutlinedIcon fontSize='small' />, command: () => window.location.href = '/solicitudes' },
         {
             label: 'Producci\u00f3n',
@@ -108,27 +114,6 @@ const Layout = ({ children }) => {
             {/* Barra de navegación superior */}
             < Menubar start={< Button label={home.label} icon={home.icon} onClick={home.command} className="btn-succes-letter p-button-text" />}
                 model={menuItems} />
-
-            {/* Sidebar para menú móvil */}
-            {/*< Sidebar visible={visibleSidebar} onHide={() => setVisibleSidebar(false)}>*/}
-            {/*    <h3>Menú</h3>*/}
-            {/*    <ul className="p-menu-list p-pt-2">*/}
-            {/*        {menuItems.map((item, index) => (*/}
-            {/*            <li key={index} className="p-mb-2">*/}
-            {/*                <button*/}
-            {/*                    className="p-menuitem-link p-link"*/}
-            {/*                    onClick={() => {*/}
-            {/*                        item.command();*/}
-            {/*                        setVisibleSidebar(false);*/}
-            {/*                    }}*/}
-            {/*                >*/}
-            {/*                    <i className={item.icon + ' p-mr-2'} />*/}
-            {/*                    <span>{item.label}</span>*/}
-            {/*                </button>*/}
-            {/*            </li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</Sidebar >*/}
 
             {/* Contenedor principal de contenido */}
             < div className="layout-content" >

@@ -239,7 +239,6 @@ const Entrada = () => {
     };
 
     return (
-
         <div className="page">
 
             {/* Botonera */}
@@ -255,7 +254,7 @@ const Entrada = () => {
                     <div className="filter-container">
                         <Card>
                             <div className=" p-fluid form-grid-entrada">
-                                <div className="p-field ">
+                                <div className="p-field div1 ">
                                     <FloatLabel>
                                         <Dropdown
                                             options={tipos}
@@ -333,6 +332,10 @@ const Entrada = () => {
                                         />
                                         <label htmlFor="cant">Cantidad</label>
                                     </FloatLabel>
+                                </div>
+                                <div className="p-field div7">
+                                    <Button label="Agregar" icon="pi pi-file-plus" className="btn-lg btn-success" onClick={handleAdd} />
+
                                 </div>
                             </div>
                         </Card>

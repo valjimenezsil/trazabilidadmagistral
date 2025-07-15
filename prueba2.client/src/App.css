@@ -24,13 +24,11 @@ html, body {
     padding: 1.5rem 0em;
     gap: 1rem;
 }
-/*Dropdowns*/
+
+
+ /*Dropdowns*/
 .p-dropdown-items .p-dropdown-item {
     font-size: 0.9rem;
-}
-.p-dropdown-items .p-dropdown-item.p-highlight {
-    background-color: var(--primary);
-    color: white;
 }
 
 /*Label*/
@@ -44,49 +42,23 @@ label {
     font-size: 0.9rem;
 }
 
-.p-datepicker-trigger {
-    background-color: var(--primary);
-    border: var(--primary);
-}
-.p-datepicker-trigger:hover {
-    background-color: var(--primary-1);
-    border: var(--primary-1);
-}
 
 .p-inputnumber-input {
     width: 100px;
+ 
 }
 
 /*Botones*/
-.p-inputnumber-button {
-    background-color: var(--primary);
-    border: var(--primary);
+.p-button {
+    font-size: 0.9rem;
+    box-shadow: none;
 }
-
-    .p-inputnumber-button:hover {
-        background-color: var(--primary-1);
-    }
-
 .btn-group {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
-.btn-success {
-    background: var(--primary);
-    color: white;
-    border: var(--primary);
-}
-
-.btn-succes-letter {
-    color: var(--primary);
-}
-.btn-success:hover {
-    background: var(--primary-1);
-    color: white;
-    border: var(--primary-1);
-}
 /* Filtros*/
 .filter-container {
     border: 1px solid #ddd;
@@ -99,10 +71,9 @@ label {
 
     .p-field .p-inputtext,
     .p-field .p-inputnumber,
-    .p-field .p-calendar,
-    .p-field .p-dropdown {
-        flex: 1;
-        min-width: 0;
+    .p-field .p-calendar {
+        align-items: center;
+        
     }
 
 /*Tabla*/
