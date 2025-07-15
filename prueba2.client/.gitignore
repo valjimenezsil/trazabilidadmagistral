@@ -30,3 +30,16 @@ build/
 .vscode/
 .DS_Store
 .env
+
+# VS / .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Node / Vue / React
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
