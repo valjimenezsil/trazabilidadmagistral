@@ -267,7 +267,7 @@ const Entrada = () => {
                                             value={entryType}
                                             onChange={e => setEntryType(e.value)}
                                         />
-                                        <label>Tipo de entrada </label>
+                                        <label>Tipo de Preparacion </label>
                                     </FloatLabel>
                                 </div>
 
