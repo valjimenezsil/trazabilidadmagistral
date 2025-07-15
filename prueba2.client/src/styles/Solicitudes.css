@@ -1,0 +1,43 @@
+
+/*Formulario de solicitudes grid*/
+.form-grid-solicitudes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.soldiv1 {
+    grid-column: span 2 / span 2;
+}
+
+.soldiv2 {
+    grid-column: span 3 / span 3;
+    grid-column-start: 3;
+}
+
+.soldiv3 {
+    grid-row-start: 2;
+}
+
+.soldiv4 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 2;
+}
+
+.soldiv5 {
+    grid-column: span 2 / span 2;
+    grid-column-start: 4;
+    grid-row-start: 2;
+}
+
+.soldiv6 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 3;
+}
+
+.soldiv7 {
+    grid-column: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 3;
+}

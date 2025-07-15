@@ -1,16 +1,4 @@
 /*Entrada*/
-.entrada-page {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 8rem;
-}
-.entrada-content {
-    flex: 1;
-    overflow: auto;
-    padding: 1.5rem 0em;
-    gap: 1rem;
-}
-
 /*Formulario de entrada grid*/
 .form-grid-entrada {
     display: grid;

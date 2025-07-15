@@ -12,7 +12,18 @@ html, body {
     width: 100%;
     height: 100%;
 }
+.page {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 8rem;
+}
 
+.content {
+    flex: 1;
+    overflow: auto;
+    padding: 1.5rem 0em;
+    gap: 1rem;
+}
 /*Dropdowns*/
 .p-dropdown-items .p-dropdown-item {
     font-size: 0.9rem;

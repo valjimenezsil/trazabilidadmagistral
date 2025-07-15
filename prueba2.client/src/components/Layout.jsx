@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
             ]
         },
         { label: 'Alistamiento', icon: <Inventory2OutlinedIcon fontSize='small' />, command: () => window.location.href = '/entrada' },
-        { label: 'Solicitudes', icon: <InboxOutlinedIcon fontSize='small' />, command: () => window.location.href = '/solicitud' },
+        { label: 'Solicitudes', icon: <InboxOutlinedIcon fontSize='small' />, command: () => window.location.href = '/solicitudes' },
         {
             label: 'Producci\u00f3n',
             icon: <SettingsOutlinedIcon fontSize="small" />,

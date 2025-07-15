@@ -14,6 +14,7 @@ import { sampleMagistralEntries } from '../data/sampleMagistralEntries';
 
 
 const Entrada = () => {
+
     // Campos a llenar en el formulario
     const formAlistamiento = {
         producto: '',
@@ -162,8 +163,6 @@ const Entrada = () => {
         />
     );
 
-
-
     //Renderiza la tabla de elementos según el tipo de entrada
     const renderTabla = () => {
         const data =
@@ -241,7 +240,7 @@ const Entrada = () => {
 
     return (
 
-        <div className="entrada-page">
+        <div className="page">
 
             {/* Botonera */}
             <div className="btn-group flex-wrap">
@@ -251,12 +250,11 @@ const Entrada = () => {
                 <Button label="Guardar" icon="pi pi-save" className="btn-lg btn-success" onClick={handleSave} />
             </div>
 
-            <div className="entrada-content">
+            <div className="content">
                 <div style={{ marginBottom: '1rem ' }}>
                     <div className="filter-container">
                         <Card>
                             <div className=" p-fluid form-grid-entrada">
-
                                 <div className="p-field ">
                                     <FloatLabel>
                                         <Dropdown
