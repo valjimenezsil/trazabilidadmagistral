@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../styles/Solicitudes.css'
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
@@ -8,8 +8,9 @@ import { InputNumber } from 'primereact/inputnumber';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { FloatLabel } from 'primereact/floatlabel';
+import { Toast } from 'primereact/toast';
 import { useNavigate } from 'react-router-dom';
-import {sampleSolicitudes} from '../data/sampleSolicitudes'; 
+import { sampleSolicitudes } from '../data/sampleSolicitudes';
 
 
 const Solicitudes = () => {
@@ -18,10 +19,10 @@ const Solicitudes = () => {
     const formSolicitudes = {
         servicio: '',
         medicamento: '',
-        cantidad: '',
-        volumen: '',
+        cantidad: null,
+        volumen: null,
         vehiculo: '',
-        concentracion: '',
+        concentracion: null,
         observacion: '',
     }
 
@@ -47,13 +48,50 @@ const Solicitudes = () => {
         ? Math.max(...sampleSolicitudes.map(s => s.id))
         : 0;
     const [nextId, setNextId] = useState(maxId + 1);
+    const [errors, setErrors] = useState({});
 
+    //Refs
+    const medicamentoRef = useRef(null);
+    const cantidadRef = useRef(null);
+    const volumenRef = useRef(null);
+    const vehiculoRef = useRef(null);
+    const concentracionRef = useRef(null);
+    const observacionRef = useRef(null);
+    const toast = useRef(null);
+
+    //Validación de campos
+    const fieldLabels = {
+        medicamento: 'Medicamento',
+        cantidad: 'Cantidad',
+        volumen: 'Volumen',
+        vehiculo: 'Veh\u00EDculo',
+        concentracion: 'Concentraci\u00F3n'
+    };
 
     //Funciones de botones
     const handleNew = () => { }
     const handleClear = () => setForm(formSolicitudes);
     const handleSave = () => { }
     const handleAdd = () => {
+
+        const faltantes = Object.keys(fieldLabels).filter(key => {
+            const val = form[key];
+            return val === null || val === '' || val === undefined;
+        });
+
+        if (faltantes.length) {
+            const detalle = faltantes.map(f => fieldLabels[f]).join(', ');
+            const newErrors = faltantes.reduce((acc, f) => ({ ...acc, [f]: true }), {});
+            setErrors(newErrors);
+
+            toast.current.show({
+                severity: 'error',
+                detail: `No ha completado:  ${detalle}`,
+                life: 4000
+            });
+            return;
+        }
+        setErrors({});
         const nueva = {
             id: nextId,
             servicio: entryType,
@@ -67,7 +105,14 @@ const Solicitudes = () => {
         setSolicitudes(prev => [...prev, nueva]);
         setNextId(prev => prev + 1);
         setForm(formSolicitudes);
-}
+
+        toast.current.show({
+            severity: 'success',
+            summary: 'Agregado',
+            detail: 'Solicitud a\u00F1adida correctamente',
+            life: 2000
+        });
+    };
 
     // Funciones tabla
     const numberEditor = options => (
@@ -77,8 +122,7 @@ const Solicitudes = () => {
             mode="decimal"
             showButtons
             min={0}
-            style={{ width: '4rem' }}
-            inputStyle={{ width: '3rem' }}
+            style={{ minWidth: '100px' }}
         />
     );
 
@@ -88,6 +132,11 @@ const Solicitudes = () => {
         const updated = e.newData;
         setSolicitudes(prev =>
             prev.map(s => s.id === updated.id ? updated : s)
+        );
+    };
+    const handleDeleteRow = (rowData) => {
+        setSolicitudes(prev =>
+            prev.filter(solicitud => solicitud.id !== rowData.id)
         );
     };
 
@@ -135,28 +184,43 @@ const Solicitudes = () => {
                         sortable
                         editor={numberEditor}
                         style={{
-                            width: '120px'
+                            width: '180px'
                         }}
                     />
                     <Column
                         field="volumen"
                         header="Volumen"
                         sortable
+                        body={rowData =>
+                            rowData.volumen != null
+                                ? `${rowData.volumen} mL`
+                                : ''
+                        }
+                        editor={numberEditor}
                         style={{
-                            width: '140px'
+                            width: '180px'
                         }}
                     />
                     <Column field="vehiculo"
                         header="Veh&iacute;culo"
                         sortable
-                        style={{ width: '140px' }}
-                    body={row => {
-                        const found = vehiculos.find(v => v.value === row.vehiculo);
-                        return found ? found.label : row.vehiculo;
-                    }}                    />
-                    <Column field="concentracion" header="Concentraci&oacute;n" sortable style={{
-                        width: '180px'
-                    }} />
+                        style={{ width: '180px' }}
+                        body={row => {
+                            const found = vehiculos.find(v => v.value === row.vehiculo);
+                            return found ? found.label : row.vehiculo;
+                        }} />
+                    <Column field="concentracion"
+                        header="Concentraci&oacute;n"
+                        sortable
+                        body={rowData =>
+                            rowData.concentracion != null
+                                ? `${rowData.concentracion} mg/mL`
+                                : ''
+                        }
+                        editor={numberEditor}
+                        style={{
+                            width: '210px'
+                        }} />
                     <Column field="observacion" header="Observaci&oacute;n" style={{
                         width: '180px'
                     }} />
@@ -167,6 +231,7 @@ const Solicitudes = () => {
 
     return (
         <div className="page">
+            <Toast ref={toast} />
             <div className="btn-group flex-wrap">
                 <Button label="Consulta" icon="pi pi-search" className="btn-lg btn-success" onClick={handleNew} />
                 <Button label="Limpiar" icon="pi pi-trash" className="btn-lg btn-success" onClick={handleClear} />
@@ -209,10 +274,17 @@ const Solicitudes = () => {
 
                                 <div className="p-field soldiv3">
                                     <FloatLabel>
-                                        <InputText
+                                        <InputNumber
+                                            inputRef={cantidadRef}
                                             id="cantidad"
                                             value={form.cantidad}
-                                            onChange={e => setForm(f => ({ ...f, cantidad: e.target.value }))}
+                                            onChange={e => setForm(f => ({ ...f, cantidad: e.value }))}
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    volumenRef.current.focus();
+                                                }
+                                            }}
                                         />
                                         <label>Cantidad</label>
                                     </FloatLabel>
@@ -220,30 +292,63 @@ const Solicitudes = () => {
 
                                 <div className="p-field soldiv4">
                                     <FloatLabel>
-                                        <InputText
+                                        <InputNumber
+                                            inputRef={volumenRef}
                                             id="volumen"
+                                            placeholder="0 mL"
+                                            suffix=" mL"
                                             value={form.volumen}
-                                            onChange={e => setForm(f => ({ ...f, volumen: e.target.value }))}
+                                            onChange={e => setForm(f => ({ ...f, volumen: e.value }))}
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    vehiculoRef.current.focus();
+                                                }
+                                            }}
                                         />
                                         <label>Volumen</label>
                                     </FloatLabel>
                                 </div>
                                 <div className="p-field soldiv5">
                                     <FloatLabel>
-                                        <InputText
+                                        <Dropdown
+                                            ref={vehiculoRef}
                                             id="vehiculo"
+                                            options={vehiculos}
+                                            optionLabel="label"
+                                            optionValue="value"
+                                            placeholder="Seleccione..."
                                             value={form.vehiculo}
                                             onChange={e => setForm(f => ({ ...f, vehiculo: e.target.value }))}
+                                            filter
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    concentracionRef.current.focus();
+                                                }
+                                            }}
                                         />
+
                                         <label>Veh&iacute;culo</label>
                                     </FloatLabel>
                                 </div>
                                 <div className="p-field soldiv6">
                                     <FloatLabel>
-                                        <InputText
+                                        <InputNumber
+                                            inputRef={concentracionRef}
                                             id="concentracion"
+                                            placeholder="0 mg /mL"
                                             value={form.concentracion}
-                                            onChange={e => setForm(f => ({ ...f, concentracion: e.target.value }))}
+                                            onChange={e => setForm(f => ({
+                                                ...f, concentracion: e.value
+                                            }))}
+                                            suffix=" mg /mL"
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    observacionRef.current.focus();
+                                                }
+                                            }}
                                         />
                                         <label>Concentraci&oacute;n</label>
                                     </FloatLabel>
@@ -251,19 +356,26 @@ const Solicitudes = () => {
                                 <div className="p-field soldiv7">
                                     <FloatLabel>
                                         <InputText
+                                            ref={observacionRef}
                                             id="observacion"
                                             value={form.observacion}
                                             onChange={e => setForm(f => ({ ...f, observacion: e.target.value }))}
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    handleAdd();
+                                                }
+                                            }}
                                         />
                                         <label>Observaci&oacute;n</label>
                                     </FloatLabel>
                                 </div>
                                 <div className="p-field soldiv8">
                                     <Button label="Agregar" icon="pi pi-file-plus" className="btn-lg btn-success" onClick={handleAdd} />
-                                </div>                               
-                    </div>
-                
-                </Card>
+                                </div>
+                            </div>
+
+                        </Card>
 
                     </div>
                 </div>

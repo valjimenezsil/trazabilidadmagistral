@@ -7,7 +7,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 2,                // mL
         vehiculo: 'solucion_salina',
-        concentracion: '50 mg/mL',
+        concentracion: 50,
         observacion: 'Administrar lentamente en 2 mL'
     },
     {
@@ -17,7 +17,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 2,
         vehiculo: 'dextrosa_5',
-        concentracion: '25 mg/mL',
+        concentracion: 25 ,
         observacion: 'Monitorear signos vitales'
     },
     {
@@ -27,7 +27,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 1,
         vehiculo: 'agua_inyeccion',
-        concentracion: '0.5 mg/mL',
+        concentracion: 0.5,
         observacion: 'Administrar en bolo lento'
     },
     {
@@ -37,7 +37,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 2,
         vehiculo: 'solucion_salina',
-        concentracion: '10 mg/mL',
+        concentracion: 10,
         observacion: 'Observar diuresis'
     },
     {
@@ -47,7 +47,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 10,
         vehiculo: 'dextrosa_5',
-        concentracion: '50 mg/mL',
+        concentracion: 50,
         observacion: 'Reconstituci\u00F3n con 10 mL de agua est\u00E9ril'
     },
     {
@@ -57,7 +57,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 5,
         vehiculo: 'solucion_salina',
-        concentracion: '10 mg/mL',
+        concentracion: 10,
         observacion: 'Dosis de carga'
     },
     {
@@ -67,7 +67,7 @@ export const sampleSolicitudes = [
         cantidad: 1,
         volumen: 10,
         vehiculo: 'agua_inyeccion',
-        concentracion: '100 mg/mL',
+        concentracion: 100,
         observacion: 'Administrar antes de la incisi\u00F3n'
     }
 ];

@@ -11,13 +11,15 @@ import { FloatLabel } from 'primereact/floatlabel';
 import '../styles/Entrada.css';
 import { useNavigate } from 'react-router-dom';
 import { sampleMagistralEntries } from '../data/sampleMagistralEntries';
-
+import { sampleMedicamentos } from '../data/sampleMedicamentos';
+import MedicationModal from '../components/MedicationModal';
 
 const Entrada = () => {
 
     // Campos a llenar en el formulario
     const formAlistamiento = {
         producto: '',
+        codigoProducto: '',
         lote: '',
         registroINVIMA: '',
         fechaVencimiento: null,
@@ -45,17 +47,23 @@ const Entrada = () => {
     const [elementosOncologico, setElementosOncologico] = useState([]);
     const [elementosNutricion, setElementosNutricion] = useState([]);
     const [elementosReenvase, setElementosReenvase] = useState([]);
+    const [showMedModal, setShowMedModal] = useState(false);
 
+    const onMedicationSelect = ({ codigo, nombre }) => {
+        setForm(f => ({
+            ...f,
+            producto: nombre,
+            codigoProducto: codigo
+        }));
+    };
     // Validación básica
 
     const handleNew = () => {
 
     };
-
     const handleClear = () => {
         setForm(formAlistamiento);
     };
-
     const handleAdd = () => {
         // 1) Construimos el objeto con los datos actuales + un id
         const nuevoRegistro = {
@@ -85,7 +93,6 @@ const Entrada = () => {
         setNextId(prev => prev + 1);
         setForm(formAlistamiento);
     };
-
     const handleSave = () => {
 
     };
@@ -159,7 +166,6 @@ const Entrada = () => {
             onValueChange={e => options.editorCallback(e.value)}
             min={0}
             showButtons
-            className="cantidad-editor"
         />
     );
 
@@ -240,6 +246,11 @@ const Entrada = () => {
 
     return (
         <div className="page">
+            <MedicationModal
+                visible={showMedModal}
+                onHide={() => setShowMedModal(false)}
+                onSelect={onMedicationSelect}
+            />
 
             {/* Botonera */}
             <div className="btn-group flex-wrap">
@@ -271,11 +282,10 @@ const Entrada = () => {
                                 <div className="p-field p-inputgroup div2" >
                                     <InputText
                                         id="prod"
-                                        value={form.producto || ''}
-                                        onChange={e => setForm(f => ({ ...f, producto: e.target.value }))}
-                                        placeholder="Buscar nombre del producto"
+                                        value={form.producto}
+                                        readOnly                                        placeholder="Buscar nombre del producto"
                                     />
-                                    <Button icon="pi pi-search" className="p-button btn-success" />
+                                    <Button icon="pi pi-search" className="p-button btn-success" onClick={() => setShowMedModal(true)} />
                                 </div>
 
 
