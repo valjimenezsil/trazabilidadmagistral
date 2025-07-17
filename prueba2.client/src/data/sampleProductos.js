@@ -1,4 +1,3 @@
-// src/data/sampleProductos.js
 export const sampleProductos = [
     {
         codigo: 'PR001',

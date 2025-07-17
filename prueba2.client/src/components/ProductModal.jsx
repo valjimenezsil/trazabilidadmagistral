@@ -3,12 +3,12 @@ import { Dialog } from 'primereact/dialog';
 import { Dropdown } from 'primereact/dropdown';
 import { sampleProductos } from '../data/sampleProductos';
 
-export default function ProductModal({ visible, onHide, onSelect }) {
+export default function ProductModal({ visible, onHide, onSelect, onAfterSelect }) {
     const dropdownRef = useRef(null);
 
+    // Al abrir el modal, despliega el dropdown automáticamente
     useEffect(() => {
         if (visible && dropdownRef.current) {
-            // Al abrir el modal, despliega el dropdown
             setTimeout(() => dropdownRef.current.show(), 0);
         }
     }, [visible]);
@@ -18,6 +18,11 @@ export default function ProductModal({ visible, onHide, onSelect }) {
         if (product) {
             onSelect(product);
             onHide();
+            if (onAfterSelect) {
+                setTimeout(() => {
+                    onAfterSelect();
+                }, 200); // Espera más larga si el modal tarda en cerrar
+            }
         }
     };
 
@@ -25,9 +30,10 @@ export default function ProductModal({ visible, onHide, onSelect }) {
         <Dialog
             header="Seleccione producto"
             visible={visible}
-            style={{ width: '30vw' }}
+            style={{ width: '60vw' , height: '30vw' }}
             modal
             onHide={onHide}
+            draggable={false}
         >
             <Dropdown
                 ref={dropdownRef}
@@ -37,6 +43,8 @@ export default function ProductModal({ visible, onHide, onSelect }) {
                 placeholder="Seleccione..."
                 onChange={handleChange}
                 style={{ width: '100%' }}
+                filter
+                appendTo="self"
             />
         </Dialog>
     );

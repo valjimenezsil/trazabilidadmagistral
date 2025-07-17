@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Card } from 'primereact/card';
@@ -8,11 +8,12 @@ import { Calendar } from 'primereact/calendar';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { FloatLabel } from 'primereact/floatlabel';
+import { Toast } from 'primereact/toast';
 import '../styles/Entrada.css';
 import { useNavigate } from 'react-router-dom';
 import { sampleMagistralEntries } from '../data/sampleMagistralEntries';
-import { sampleMedicamentos } from '../data/sampleMedicamentos';
-import MedicationModal from '../components/MedicationModal';
+import ProductModal from '../components/ProductModal';
+
 
 const Entrada = () => {
 
@@ -47,17 +48,35 @@ const Entrada = () => {
     const [elementosOncologico, setElementosOncologico] = useState([]);
     const [elementosNutricion, setElementosNutricion] = useState([]);
     const [elementosReenvase, setElementosReenvase] = useState([]);
-    const [showMedModal, setShowMedModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false);
+    const [errors, setErrors] = useState({});
 
-    const onMedicationSelect = ({ codigo, nombre }) => {
+    const onProductSelect = product => {
         setForm(f => ({
             ...f,
-            producto: nombre,
-            codigoProducto: codigo
+            producto: product.nombre,
+            codigoProducto: product.codigo,
+            lote: product.lote,
+            registroINVIMA: product.registroINVIMA,
+            fechaVencimiento: product.fechaVencimiento
         }));
-    };
-    // Validación básica
 
+    };
+
+    //Refs
+    const productoRef = useRef(null);
+    const cantidadRef = useRef(null);
+    const toast = useRef(null);
+    const dataTableRef = useRef(null);
+
+
+    //Validación de campos
+    const fieldLabels = {
+        producto: 'Producto',
+        cantidad: 'Cantidad',
+    };
+
+    // Handlers
     const handleNew = () => {
 
     };
@@ -65,6 +84,23 @@ const Entrada = () => {
         setForm(formAlistamiento);
     };
     const handleAdd = () => {
+        // Validación de campos obligatorios
+        const faltantes = Object.keys(fieldLabels).filter(key => {
+            const val = form[key];
+            return val === null || val === '' || val === undefined;
+        });
+        if (faltantes.length) {
+            const detalle = faltantes.map(f => fieldLabels[f]).join(', ');
+            const newErrors = faltantes.reduce((acc, f) => ({ ...acc, [f]: true }), {});
+            setErrors(newErrors);
+
+            toast.current.show({
+                severity: 'error',
+                detail: `No ha completado:  ${detalle}`,
+                life: 4000
+            });
+            return;
+        }
         // 1) Construimos el objeto con los datos actuales + un id
         const nuevoRegistro = {
             ...form,
@@ -88,13 +124,26 @@ const Entrada = () => {
             default:
                 console.warn('Tipo de entrada desconocido:', entryType);
         }
-
         // 3) Preparamos el siguiente id y reseteamos el formulario
         setNextId(prev => prev + 1);
         setForm(formAlistamiento);
+
+        toast.current.show({
+            severity: 'success',
+            summary: 'Agregado',
+            detail: 'Solicitud a\u00F1adida correctamente',
+            life: 2000
+        });
     };
+
     const handleSave = () => {
 
+    };
+
+    const handleAfterSelect = () => {
+        setTimeout(() => {
+            if (cantidadRef.current) cantidadRef.current.focus();
+        }, 100); // Delay para esperar que el modal se cierre
     };
 
     // Maneja la eliminación de filas
@@ -166,11 +215,14 @@ const Entrada = () => {
             onValueChange={e => options.editorCallback(e.value)}
             min={0}
             showButtons
+
         />
     );
 
     //Renderiza la tabla de elementos según el tipo de entrada
     const renderTabla = () => {
+        const dataTableRef = useRef(null);
+
         const data =
             entryType === 'magistral'
                 ? elementosMagistral
@@ -238,7 +290,7 @@ const Entrada = () => {
                             width: '140px'
                         }}
                     />
-                   
+
                 </DataTable>
             </div>
         );
@@ -246,10 +298,12 @@ const Entrada = () => {
 
     return (
         <div className="page">
-            <MedicationModal
-                visible={showMedModal}
-                onHide={() => setShowMedModal(false)}
-                onSelect={onMedicationSelect}
+            <Toast ref={toast} />
+            <ProductModal
+                visible={showProductModal}
+                onHide={() => setShowProductModal(false)}
+                onAfterSelect={handleAfterSelect}
+                onSelect={onProductSelect}
             />
 
             {/* Botonera */}
@@ -274,6 +328,12 @@ const Entrada = () => {
                                             placeholder="Seleccione..."
                                             value={entryType}
                                             onChange={e => setEntryType(e.value)}
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    productoRef.current.focus();
+                                                }
+                                            }}
                                         />
                                         <label>Tipo de Preparacion </label>
                                     </FloatLabel>
@@ -281,11 +341,22 @@ const Entrada = () => {
 
                                 <div className="p-field p-inputgroup div2" >
                                     <InputText
+                                        ref={productoRef}
                                         id="prod"
                                         value={form.producto}
-                                        readOnly                                        placeholder="Buscar nombre del producto"
+                                        readOnly
+                                        placeholder="Buscar nombre del producto"
+                                        onClick={() => setShowProductModal(true)}
+                                        onKeyDown={e => {
+                                            if (e.key === 'Enter') {
+                                                setShowProductModal(true);
+                                            }
+                                        }}
+                                        style={{ cursor: 'pointer', background: '#f7f7f7' }}
                                     />
-                                    <Button icon="pi pi-search" className="p-button btn-success" onClick={() => setShowMedModal(true)} />
+                                    <Button icon="pi pi-search" className="p-button btn-success"
+                                        onClick={() => setShowProductModal(true)}
+                                    />
                                 </div>
 
 
@@ -295,6 +366,7 @@ const Entrada = () => {
                                             id="lote"
                                             value={form.lote}
                                             onChange={e => setForm(f => ({ ...f, lote: e.target.value }))}
+                                            disabled
                                         />
                                         <label htmlFor="lote">Lote</label>
                                     </FloatLabel>
@@ -310,6 +382,7 @@ const Entrada = () => {
                                             placeholder="fecha de vencimiento"
                                             dateFormat="yy/mm/dd"
                                             showIcon
+                                            disabled
 
                                         />
                                         <label htmlFor="fv">Fecha de vencimiento</label>
@@ -321,6 +394,7 @@ const Entrada = () => {
                                         id="reg"
                                         value={form.registroINVIMA}
                                         onChange={e => setForm(f => ({ ...f, registroINVIMA: e.target.value }))}
+                                        disabled
                                     />
                                         <label htmlFor="reg">Registro INVIMA</label>
                                     </FloatLabel>
@@ -329,6 +403,7 @@ const Entrada = () => {
                                 <div className="p-field div6" >
                                     <FloatLabel>
                                         <InputNumber
+                                            ref={cantidadRef}
                                             id="cant"
                                             value={form.cantidad || null}
                                             onChange={e => setForm(f => ({ ...f, cantidad: e.value }))}

@@ -26,18 +26,18 @@ html, body {
 }
 
 
- /*Dropdowns*/
+/*---------Dropdowns---------*/
 .p-dropdown-items .p-dropdown-item {
     font-size: 0.9rem;
 }
 
-/*Label*/
+/*---------Label---------*/
 label {
     font-weight: 600;
     font-size: 0.8rem;
 }
 
-/*Input*/
+/*---------Input---------*/
 .p-inputtext {
     font-size: 0.9rem;
 }
@@ -48,7 +48,7 @@ label {
  
 }
 
-/*Botones*/
+/*---------Botones---------*/
 .p-button {
     font-size: 0.9rem;
     box-shadow: none;
@@ -59,7 +59,7 @@ label {
     gap: 1rem;
 }
 
-/* Filtros*/
+/*--------- Filtros---------*/
 .filter-container {
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -76,7 +76,7 @@ label {
         
     }
 
-/*Tabla*/
+/*---------Tabla---------*/
 .p-datatable .p-datatable-tbody > tr > td {
     font-size: 0.8rem !important;
     color: #333;
@@ -110,3 +110,7 @@ label {
         background-color: var(--gray-1) !important;
 
 }
+.p-datatable-tbody > tr > td {
+    padding: 6px 18px!important; 
+}
+
