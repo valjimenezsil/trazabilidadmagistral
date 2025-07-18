@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Menubar } from 'primereact/menubar';
-import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
@@ -18,11 +17,7 @@ import '../styles/Layout.css';
 const Layout = ({ children }) => {
     const [visibleSidebar, setVisibleSidebar] = useState(false);
 
-    const home = {
-        label: 'Inicio',
-        icon: 'pi pi-home',
-        command: () => window.location.href = '/'
-    };
+   
 
     const menuItems = [
         {
@@ -112,11 +107,11 @@ const Layout = ({ children }) => {
     return (
         <div className="layout" >
             {/* Barra de navegación superior */}
-            < Menubar start={< Button label={home.label} icon={home.icon} onClick={home.command} className="btn-succes-letter p-button-text" />}
-                model={menuItems} />
+            < Menubar model={menuItems} className="btn-succes-letter p-button-text" />
+               
 
             {/* Contenedor principal de contenido */}
-            < div className="layout-content" >
+            <div className="layout-content" >
                 {children}
             </div >
 

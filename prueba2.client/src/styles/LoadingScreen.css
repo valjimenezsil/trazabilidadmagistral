@@ -1,0 +1,19 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6f8;
+    z-index: 9999;
+}
+
+.spinner-wrapper {
+    text-align: center;
+}
+
+.loading-text {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #444;
+}

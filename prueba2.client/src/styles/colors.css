@@ -11,6 +11,7 @@
     --gray-2: #bbbbbc;
     --gray-3: #9c9c9d;
     /*Morado*/
+    --violet-dark: #660055;
     --violet: #80006a; /* Principal */
     --violet-1: #a65c99;
     --violet-2: #cc73a5;
@@ -18,5 +19,5 @@
     --violet-4: #e6c8db;
     --violet-5: #f2e4ed;
     /*Lara- Purple*/
-    --lara-purple:  #8b5cf6;
+    --lara-purple: #8b5cf6;
 }

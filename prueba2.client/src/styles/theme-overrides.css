@@ -1,0 +1,52 @@
+/* theme-overrides.css */
+
+/* 1) Tu color base y sus variantes claras/oscuras automáticas */
+:root {
+    --violet: #80006a;
+    /* Tonos claros (mezcla con blanco) */
+    --violet-light-1: color-mix(in srgb, var(--violet) 10%, white);
+    --violet-light-2: color-mix(in srgb, var(--violet) 20%, white);
+    --violet-light-3: color-mix(in srgb, var(--violet) 40%, white);
+    --violet-light-4: color-mix(in srgb, var(--violet) 80%, white);
+    /* Tonos oscuros (mezcla con negro) */
+    --violet-dark-1: color-mix(in srgb, var(--violet) 10%, black);
+    --violet-dark-2: color-mix(in srgb, var(--violet) 20%, black);
+    --violet-dark-3: color-mix(in srgb, var(--violet) 40%, black);
+    --violet-dark-4: color-mix(in srgb, var(--violet) 60%, black);
+}
+
+/* 2) Sobrescribo TODO el sistema de colores del tema de PrimeReact */
+:root {
+    /* PRIMARY */
+    --primary-color: var(--violet) !important;
+    --primary-color-text: #ffffff !important;
+    --primary-light-1: var(--violet-light-1) !important;
+    --primary-light-2: var(--violet-light-2) !important;
+    --primary-light-3: var(--violet-light-3) !important;
+    --primary-light-4: var(--violet-light-4) !important;
+    --primary-dark-1: var(--violet-dark-1) !important;
+    --primary-dark-2: var(--violet-dark-2) !important;
+    --primary-dark-3: var(--violet-dark-3) !important;
+    --primary-dark-4: var(--violet-dark-4) !important;
+    /* SURFACES */
+    --surface-ground: var(--violet-light-4) !important;
+    --surface-card: var(--violet-light-3) !important;
+    --surface-overlay: var(--violet-light-2) !important;
+    --surface-input: var(--violet-light-1) !important;
+    --surface-hover: var(--violet-light-2) !important;
+    --surface-selected: var(--violet-light-3) !important;
+    --surface-border: var(--violet-dark-1) !important;
+    --surface-drag: var(--violet-dark-2) !important;
+    /* TEXTOS */
+    --text-color: #000000 !important;
+    --text-color-secondary: #444444 !important;
+    --text-highlight: var(--violet) !important;
+    --text-disabled: var(--violet-light-2) !important;
+    /* ESTADOS (éxito/info/advertencia/error) – si quieres puedes cambiarlos */
+    --success-color: #4caf50 !important;
+    --info-color: #2196f3 !important;
+    --warning-color: #ff9800 !important;
+    --danger-color: #f44336 !important;
+    /* OTROS  */
+    --body-background: #ffffff !important;
+}

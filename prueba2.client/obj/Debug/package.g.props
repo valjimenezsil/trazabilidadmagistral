@@ -29,6 +29,7 @@
     <PackageJsonDevdependenciesEslintPluginReactHooks Condition="$(PackageJsonDevdependenciesEslintPluginReactHooks) == ''">^5.2.0</PackageJsonDevdependenciesEslintPluginReactHooks>
     <PackageJsonDevdependenciesEslintPluginReactRefresh Condition="$(PackageJsonDevdependenciesEslintPluginReactRefresh) == ''">^0.4.20</PackageJsonDevdependenciesEslintPluginReactRefresh>
     <PackageJsonDevdependenciesGlobals Condition="$(PackageJsonDevdependenciesGlobals) == ''">^16.2.0</PackageJsonDevdependenciesGlobals>
+    <PackageJsonDevdependenciesPrimereactSassTheme Condition="$(PackageJsonDevdependenciesPrimereactSassTheme) == ''">^0.0.1-security</PackageJsonDevdependenciesPrimereactSassTheme>
     <PackageJsonDevdependenciesVite Condition="$(PackageJsonDevdependenciesVite) == ''">^7.0.0</PackageJsonDevdependenciesVite>
   </PropertyGroup>
 </Project>

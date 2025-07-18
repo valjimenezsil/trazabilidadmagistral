@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+ï»¿import React, { useState, useRef, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Card } from 'primereact/card';
@@ -43,6 +43,7 @@ const Entrada = () => {
     const [nextId, setNextId] = useState(maxId + 1);
     const [entryType, setEntryType] = useState('magistral');
     const [form, setForm] = useState(formAlistamiento);
+    const [productos, setProductos] = useState([]);
 
     const [elementosMagistral, setElementosMagistral] = useState(sampleMagistralEntries);
     const [elementosOncologico, setElementosOncologico] = useState([]);
@@ -51,18 +52,7 @@ const Entrada = () => {
     const [showProductModal, setShowProductModal] = useState(false);
     const [errors, setErrors] = useState({});
 
-    const onProductSelect = product => {
-        setForm(f => ({
-            ...f,
-            producto: product.nombre,
-            codigoProducto: product.codigo,
-            lote: product.lote,
-            registroINVIMA: product.registroINVIMA,
-            fechaVencimiento: product.fechaVencimiento
-        }));
-
-    };
-
+   
     //Refs
     const productoRef = useRef(null);
     const cantidadRef = useRef(null);
@@ -70,7 +60,7 @@ const Entrada = () => {
     const dataTableRef = useRef(null);
 
 
-    //Validación de campos
+    //ValidaciÃ³n de campos
     const fieldLabels = {
         producto: 'Producto',
         cantidad: 'Cantidad',
@@ -84,7 +74,7 @@ const Entrada = () => {
         setForm(formAlistamiento);
     };
     const handleAdd = () => {
-        // Validación de campos obligatorios
+        // ValidaciÃ³n de campos obligatorios
         const faltantes = Object.keys(fieldLabels).filter(key => {
             const val = form[key];
             return val === null || val === '' || val === undefined;
@@ -107,7 +97,7 @@ const Entrada = () => {
             id: nextId
         };
 
-        // 2) Lo añadimos al array que toca según entryType
+        // 2) Lo aÃ±adimos al array que toca segÃºn entryType
         switch (entryType) {
             case 'magistral':
                 setElementosMagistral(prev => [...prev, nuevoRegistro]);
@@ -146,7 +136,7 @@ const Entrada = () => {
         }, 100); // Delay para esperar que el modal se cierre
     };
 
-    // Maneja la eliminación de filas
+    // Maneja la eliminaciÃ³n de filas
     const handleDeleteRow = (rowData) => {
         switch (entryType) {
             case 'magistral':
@@ -165,7 +155,7 @@ const Entrada = () => {
                 console.warn('Tipo de entrada desconocido:', entryType);
         }
     };
-    // Maneja la edición de filas
+    // Maneja la ediciÃ³n de filas
     const onRowEditInit = (event) => {
         // event.data es la fila; si necesitas, puedes guardar un clon
     };
@@ -193,21 +183,10 @@ const Entrada = () => {
                 );
                 break;
             default:
-                console.warn('Tipo de entrada desconocido en edición:', entryType);
+                console.warn('Tipo de entrada desconocido en ediciÃ³n:', entryType);
 
         };
     };
-
-
-    // Maneja la eliminación de filas
-    const dateEditor = (options) => (
-        <Calendar
-            value={options.value}
-            onChange={e => options.editorCallback(e.value)}
-            dateFormat="yy/mm/dd"
-            showIcon
-        />
-    );
 
     const numberEditor = (options) => (
         <InputNumber
@@ -219,9 +198,24 @@ const Entrada = () => {
         />
     );
 
-    //Renderiza la tabla de elementos según el tipo de entrada
+   
+    
+    
+
+    const onProductSelect = product => {
+        setForm(f => ({
+            ...f,
+            producto: product.MSDesc.trim(), 
+            codigoProducto: product.MSCodi, 
+            lote: product.lote,
+            registroINVIMA: product.registroINVIMA,
+            fechaVencimiento: product.fechaVencimiento
+        }));
+
+    };
+    
+    //Renderiza la tabla de elementos segÃºn el tipo de entrada
     const renderTabla = () => {
-        const dataTableRef = useRef(null);
 
         const data =
             entryType === 'magistral'
@@ -236,6 +230,7 @@ const Entrada = () => {
             <div className="tabla-container">
                 <DataTable
                     value={data}
+                    ref={dataTableRef}
                     editMode="row"
                     dataKey="id"
                     scrollable scrollHeight="350px"
@@ -296,22 +291,25 @@ const Entrada = () => {
         );
     };
 
+
     return (
         <div className="page">
             <Toast ref={toast} />
             <ProductModal
                 visible={showProductModal}
                 onHide={() => setShowProductModal(false)}
+                onSelect={onProductSelect}      // â† aquÃ­
                 onAfterSelect={handleAfterSelect}
-                onSelect={onProductSelect}
+                optionLabel="label"
+                optionValue="value"
             />
 
             {/* Botonera */}
             <div className="btn-group flex-wrap">
-                <Button label="Consulta" icon="pi pi-search" className="btn-lg btn-success" onClick={handleNew} />
-                <Button label="Limpiar" icon="pi pi-trash" className="btn-lg btn-success" onClick={handleClear} />
-                <Button label="Agregar" icon="pi pi-file-plus" className="btn-lg btn-success" onClick={handleAdd} />
-                <Button label="Guardar" icon="pi pi-save" className="btn-lg btn-success" onClick={handleSave} />
+                <Button label="Consulta" icon="pi pi-search" className=" btn-success" onClick={handleNew} />
+                <Button label="Limpiar" icon="pi pi-trash" className=" btn-success" onClick={handleClear} />
+                <Button label="Agregar" icon="pi pi-file-plus" className=" btn-success" onClick={handleAdd} />
+                <Button label="Guardar" icon="pi pi-save" className=" btn-success" onClick={handleSave} />
             </div>
 
             <div className="content">
@@ -322,6 +320,7 @@ const Entrada = () => {
                                 <div className="p-field div1 ">
                                     <FloatLabel>
                                         <Dropdown
+                                            className="custom-dropdown" 
                                             options={tipos}
                                             optionLabel="label"
                                             optionValue="value"
@@ -349,6 +348,7 @@ const Entrada = () => {
                                         onClick={() => setShowProductModal(true)}
                                         onKeyDown={e => {
                                             if (e.key === 'Enter') {
+                                                e.preventDefault();  // opcional, evita comportamientos extraÃ±os
                                                 setShowProductModal(true);
                                             }
                                         }}
@@ -366,7 +366,7 @@ const Entrada = () => {
                                             id="lote"
                                             value={form.lote}
                                             onChange={e => setForm(f => ({ ...f, lote: e.target.value }))}
-                                            disabled
+                                            
                                         />
                                         <label htmlFor="lote">Lote</label>
                                     </FloatLabel>
@@ -382,7 +382,7 @@ const Entrada = () => {
                                             placeholder="fecha de vencimiento"
                                             dateFormat="yy/mm/dd"
                                             showIcon
-                                            disabled
+                                            
 
                                         />
                                         <label htmlFor="fv">Fecha de vencimiento</label>
@@ -390,12 +390,13 @@ const Entrada = () => {
                                 </div>
 
                                 <div className="p-field div5" >
-                                    <FloatLabel>                                <InputText
-                                        id="reg"
-                                        value={form.registroINVIMA}
-                                        onChange={e => setForm(f => ({ ...f, registroINVIMA: e.target.value }))}
-                                        disabled
-                                    />
+                                    <FloatLabel>
+                                        <InputText
+                                            id="reg"
+                                            value={form.registroINVIMA}
+                                            onChange={e => setForm(f => ({ ...f, registroINVIMA: e.target.value }))}
+                                            
+                                        />
                                         <label htmlFor="reg">Registro INVIMA</label>
                                     </FloatLabel>
                                 </div>
@@ -410,7 +411,7 @@ const Entrada = () => {
                                             placeholder=" "
                                             onKeyDown={e => {
                                                 if (e.key === 'Enter') {
-                                                    e.preventDefault();  // opcional, evita comportamientos extraños
+                                                    e.preventDefault();  // opcional, evita comportamientos extraÃ±os
                                                     handleAdd();
                                                 }
                                             }}

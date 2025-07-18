@@ -12,6 +12,7 @@ html, body {
     width: 100%;
     height: 100%;
 }
+
 .page {
     display: flex;
     flex-direction: column;
@@ -26,18 +27,18 @@ html, body {
 }
 
 
-/*---------Dropdowns---------*/
+/*---------DROPDOWNS---------*/
 .p-dropdown-items .p-dropdown-item {
     font-size: 0.9rem;
 }
 
-/*---------Label---------*/
+/*---------LABEL---------*/
 label {
     font-weight: 600;
     font-size: 0.8rem;
 }
 
-/*---------Input---------*/
+/*---------INPUT---------*/
 .p-inputtext {
     font-size: 0.9rem;
 }
@@ -45,21 +46,41 @@ label {
 
 .p-inputnumber-input {
     width: 100px;
- 
 }
 
-/*---------Botones---------*/
+/*---------BOTONES---------*/
 .p-button {
     font-size: 0.9rem;
     box-shadow: none;
 }
+
 .btn-group {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
-/*--------- Filtros---------*/
+.btn-success {
+    background-color: var(--violet) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.p-button.btn-success:hover {
+    background-color: var(--violet-dark) !important;
+    border-color: var(--violet-dark) !important;
+}
+
+.p-datepicker-trigger {
+    background-color: var(--violet) !important;
+    border-color: var(--violet) !important;
+}
+
+    .p-datepicker-trigger:hover {
+        background-color: var(--violet-dark) !important;
+        border-color: var(--violet-dark) !important;
+    }
+/*--------- FILTROS---------*/
 .filter-container {
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -73,10 +94,9 @@ label {
     .p-field .p-inputnumber,
     .p-field .p-calendar {
         align-items: center;
-        
     }
 
-/*---------Tabla---------*/
+/*---------TABLA---------*/
 .p-datatable .p-datatable-tbody > tr > td {
     font-size: 0.8rem !important;
     color: #333;
@@ -102,15 +122,32 @@ label {
     padding: 0 !important;
     line-height: 1.5rem !important;
 }
+
 .p-datatable .p-datatable-thead > tr > th.p-sortable-column.p-sortable-column-active {
     background-color: var(--primary) !important;
     color: white !important;
 }
-.p-datatable .p-datatable-thead > tr > th.p-highlight {
-        background-color: var(--gray-1) !important;
 
+.p-datatable .p-datatable-thead > tr > th.p-highlight {
+    background-color: var(--gray-1) !important;
 }
+
 .p-datatable-tbody > tr > td {
-    padding: 6px 18px!important; 
+    padding: 6px 18px !important;
+}
+
+/*---------FOCUS---------*/
+
+.p-inputtext:focus,
+.p-inputnumber:focus,
+.p-calendar:focus,
+.p-dropdown:focus,
+.p-autocomplete:focus,
+.p-button:focus,
+p-datepicker-trigger:focus,
+.btn-success:focus {
+    outline: none !important;
+    border-color: var(--violet-dark) !important;
+    box-shadow: 0 0 0 0.2rem var(--violet-4) !important;
 }
 
